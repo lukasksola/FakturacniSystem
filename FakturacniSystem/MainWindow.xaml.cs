@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FakturacniSystem.Pages;
 
 namespace FakturacniSystem
 {
@@ -19,6 +20,9 @@ namespace FakturacniSystem
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new SkladView());
+
+
         }
     }
 }
