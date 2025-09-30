@@ -82,6 +82,7 @@ namespace FakturacniSystem.Pages
                     db.Polozky.Add(polozka);
                     db.SaveChanges();
                 }
+                MessageBox.Show("Polozka pridana");
             }
         }
 
