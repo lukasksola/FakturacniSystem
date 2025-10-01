@@ -16,8 +16,11 @@
             <RowDefinition Height="8*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        
-        <Button Content="Pridat do skladu" Grid.Row="1" Height="80" VerticalAlignment="Bottom" Click="PridatDoSkladu"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+            <Button Height="50" Content="Upravit Polozku" Click="UpravitPolozku" />
+            <Button Content="Pridat do skladu" Height="80" Click="PridatDoSkladu"/>
+        </StackPanel>
         
         <ListView Background="AntiqueWhite" Grid.Row="2" Grid.Column="2" Name="SkladList">
             <ListView.View>

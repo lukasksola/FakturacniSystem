@@ -52,5 +52,12 @@ namespace FakturacniSystem.Pages
         {
             NavigationService.Navigate(new PridatDoSkladuView());
         }
+
+        private void UpravitPolozku(object sender, RoutedEventArgs e)
+        {
+            if (SkladList.SelectedItem != null) {
+                NavigationService.Navigate(new UpravitPolozkuView((Polozka)SkladList.SelectedItem));
+            }
+        }
     }
 }

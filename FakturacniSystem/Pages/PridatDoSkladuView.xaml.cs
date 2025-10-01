@@ -82,15 +82,22 @@ namespace FakturacniSystem.Pages
                     db.Polozky.Add(polozka);
                     db.SaveChanges();
                 }
+
                 MessageBox.Show("Polozka pridana");
+            } else
+            {
+                MessageBox.Show("Pocet pridan");
             }
+
+            NavigationService.Navigate(new SkladView());
+
         }
 
         bool AddPocet()
         {
             using (var db = new SqliteContext())
             {
-                if (Id != null)
+                if (_id != 0)
                 {
 
                     foreach (var item in db.Polozky)
@@ -100,7 +107,7 @@ namespace FakturacniSystem.Pages
                             if (_pridanyPocet != 0)
                             {
                                 item.Pocet += _pridanyPocet;
-
+                                db.SaveChanges();
                             }
 
                             return true;
@@ -118,13 +125,13 @@ namespace FakturacniSystem.Pages
                         {
 
                             item.Pocet += _pridanyPocet;
-
+                            db.SaveChanges();
                             return true;
                         }
                     }
                     return false;
                 }
-                db.SaveChanges();
+                
             }
             return false;
 
