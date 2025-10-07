@@ -8,11 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="28*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="95*"/>
         </Grid.RowDefinitions>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Content="Sklad" Click="SkladNavigate"/>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="150,0,0,0" Content="Dodavatele" Click="DodavateleNavigate"/>
 
 
     </Grid>

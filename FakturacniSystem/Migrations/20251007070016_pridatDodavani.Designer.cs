@@ -2,6 +2,7 @@
 using FakturacniSystem.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakturacniSystem.Migrations
 {
     [DbContext(typeof(SqliteContext))]
-    partial class SqliteContextModelSnapshot : ModelSnapshot
+    [Migration("20251007070016_pridatDodavani")]
+    partial class pridatDodavani
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -30,6 +33,8 @@ namespace FakturacniSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PolozkaId");
 
                     b.ToTable("Dodavatele");
                 });
@@ -50,6 +55,17 @@ namespace FakturacniSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Polozky");
+                });
+
+            modelBuilder.Entity("FakturacniSystem.Code.DodanaPolozka", b =>
+                {
+                    b.HasOne("FakturacniSystem.Code.Polozka", "Polozka")
+                        .WithMany()
+                        .HasForeignKey("PolozkaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Polozka");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,14 +3,20 @@ using FakturacniSystem.EF;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace FakturacniSystem.Pages
 {
     /// <summary>
-    /// Interakční logika pro PridatDoSkladuView.xaml
+    /// Interakční logika pro PridatDodavatele.xaml
     /// </summary>
-    public partial class PridatDoSkladuView : Page, INotifyPropertyChanged
+    public partial class PridatDodavatele : Page
     {
+        public PridatDodavatele()
+        {
+            InitializeComponent();
+            this.DataContext = this;
+        }
 
         string _nazev;
         public string Nazev
@@ -56,11 +62,21 @@ namespace FakturacniSystem.Pages
             }
         }
 
-        public PridatDoSkladuView()
+        string _nazevDodavatele;
+        public string NazevDodavatele
         {
-            InitializeComponent();
-            DataContext = this;
+            get { return _nazevDodavatele; }
+            set
+            {
+                if (value != _nazevDodavatele && value != null)
+                {
+                    _nazevDodavatele = value;
+
+                    OnPropertyChanged(nameof(NazevDodavatele));
+                }
+            }
         }
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -71,15 +87,13 @@ namespace FakturacniSystem.Pages
 
         private void Pridej(object sender, RoutedEventArgs e)
         {
-
+            var polozka = new Polozka();
+            polozka.Jmeno = _nazev;
+            polozka.Pocet = _pridanyPocet;
             if (!AddPocet())
             {
                 using (var db = new SqliteContext())
                 {
-                    var polozka = new Polozka();
-                    polozka.Jmeno = _nazev;
-                    polozka.Pocet = _pridanyPocet;
-
                     db.Polozky.Add(polozka);
                     db.SaveChanges();
                 }
@@ -91,10 +105,35 @@ namespace FakturacniSystem.Pages
                 MessageBox.Show("Pocet pridan");
             }
 
+            using (var db = new SqliteContext())
+            {
+                var dodavatel = new DodanaPolozka();
+                dodavatel.NazevDodavatele = _nazevDodavatele;
+                int id = 0;
+
+                foreach(Polozka pol in db.Polozky.ToList())
+                {
+                    if(pol.Jmeno == polozka.Jmeno)
+                    {
+                        id = pol.Id;
+                    }
+                }
+                dodavatel.PolozkaId = id;
+                dodavatel.denDodani = DateTime.Today;
+                db.Dodavatele.Add(dodavatel);
+                db.SaveChanges();
+
+            }
+
+
             NavigationService.Navigate(new SkladView());
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> vraci true pokud najde polozku, false pokud vytvari novou </returns>
         bool AddPocet()
         {
             using (var db = new SqliteContext())
@@ -138,5 +177,7 @@ namespace FakturacniSystem.Pages
             return false;
 
         }
+
+        
     }
 }

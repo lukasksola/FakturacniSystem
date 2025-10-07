@@ -31,8 +31,12 @@ namespace FakturacniSystem.Pages
                 MessageBox.Show("vybrana polozka je null");
             } else
             {
-                this.polozka = polozka;
-                DataContext = polozka;
+
+                this.polozka = new Polozka();
+                this.polozka.Jmeno = polozka.Jmeno;
+                this.polozka.Pocet = polozka.Pocet;
+                this.polozka.Id = polozka.Id;
+                DataContext = this.polozka;
 
             }
         }

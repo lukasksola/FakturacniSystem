@@ -13,6 +13,9 @@ namespace FakturacniSystem.EF
     public class SqliteContext : DbContext
     {
         public DbSet<Polozka> Polozky { get; set; }
+        public DbSet<DodanaPolozka> Dodavatele { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
