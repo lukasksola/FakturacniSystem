@@ -13,5 +13,7 @@ namespace FakturacniSystem.Code
 
         public DateTime denDodani;
         public int PolozkaId { get; set; }
+
+        public int pocetPolozekPridano { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace FakturacniSystem.Pages
     public partial class ZaznamDodavateluView : Page
     {
         public List<DodanaPolozka> dodavatele = new List<DodanaPolozka>();
-        public List<(DodanaPolozka, Polozka)> Contract = new List<(DodanaPolozka, Polozka)>();
+        public List<DodavaniZaznam> Contract = new List<DodavaniZaznam>();
 
         public ZaznamDodavateluView()
         {
@@ -40,8 +40,16 @@ namespace FakturacniSystem.Pages
             {
                 dodavatele = db.Dodavatele.ToList();
 
+                foreach (DodanaPolozka dodano in dodavatele) {
+                    DodavaniZaznam zaznam = new DodavaniZaznam();
+                    zaznam.dodavani = dodano;
 
-                Contract.Add((dodavatele[0], db.Polozky.ToList()[0]));
+                    zaznam.polozka = db.Polozky.ToList().FirstOrDefault(x => x.Id == dodano.PolozkaId); 
+
+                    Contract.Add(zaznam);
+                }
+
+
             }
         }
 

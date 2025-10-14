@@ -92,6 +92,7 @@ namespace FakturacniSystem.Pages
             polozka.Pocet = _pridanyPocet;
             if (!AddPocet())
             {
+                //vytvari novou polozku
                 using (var db = new SqliteContext())
                 {
                     db.Polozky.Add(polozka);
@@ -120,6 +121,7 @@ namespace FakturacniSystem.Pages
                 }
                 dodavatel.PolozkaId = id;
                 dodavatel.denDodani = DateTime.Today;
+                dodavatel.pocetPolozekPridano = _pridanyPocet;
                 db.Dodavatele.Add(dodavatel);
                 db.SaveChanges();
 

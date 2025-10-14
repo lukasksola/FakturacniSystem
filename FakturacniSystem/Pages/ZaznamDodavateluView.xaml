@@ -26,9 +26,9 @@
         <ListView Background="LightBlue" Grid.Row="2" Grid.Column="2" Name="DodavateleList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding Item2.Jmeno}" Width="140"/>
-                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding Item2.Pocet}" Width="200"/>
-                    <GridViewColumn Header="Dodavatel" DisplayMemberBinding="{Binding Item1.NazevDodavatele}" Width="200"/>
+                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding polozka.Jmeno}" Width="140"/>
+                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding dodavani.pocetPolozekPridano}" Width="200"/>
+                    <GridViewColumn Header="Dodavatel" DisplayMemberBinding="{Binding dodavani.NazevDodavatele}" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>
