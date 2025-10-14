@@ -69,7 +69,7 @@ namespace FakturacniSystem.Pages
         {
             if (DodavateleList.SelectedItem != null)
             {
-                NavigationService.Navigate(new UpravitPolozkuView((Polozka)DodavateleList.SelectedItem));
+                NavigationService.Navigate(new UpravitDodavateleView((DodavaniZaznam)DodavateleList.SelectedItem));
             }
         }
 
