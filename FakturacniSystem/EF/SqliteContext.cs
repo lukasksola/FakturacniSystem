@@ -14,6 +14,7 @@ namespace FakturacniSystem.EF
     {
         public DbSet<Polozka> Polozky { get; set; }
         public DbSet<DodanaPolozka> Dodavatele { get; set; }
+        public DbSet<OdebraniZaznam> Odebiratele { get; set; }
 
 
 

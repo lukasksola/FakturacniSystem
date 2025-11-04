@@ -15,6 +15,8 @@
 
         <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Content="Sklad" Click="SkladNavigate"/>
         <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="150,0,0,0" Content="Dodavatele" Click="DodavateleNavigate"/>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="300,0,0,0" Content="Odberatele" Click="DodavateleNavigate"/>
+
 
 
     </Grid>

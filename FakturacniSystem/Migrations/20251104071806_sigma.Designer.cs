@@ -2,6 +2,7 @@
 using FakturacniSystem.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakturacniSystem.Migrations
 {
     [DbContext(typeof(SqliteContext))]
-    partial class SqliteContextModelSnapshot : ModelSnapshot
+    [Migration("20251104071806_sigma")]
+    partial class sigma
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -35,27 +38,6 @@ namespace FakturacniSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Dodavatele");
-                });
-
-            modelBuilder.Entity("FakturacniSystem.Code.OdebraniZaznam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("NazevOdberatele")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PolozkaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("pocetPolozekOdebrano")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Odebiratele");
                 });
 
             modelBuilder.Entity("FakturacniSystem.Code.Polozka", b =>

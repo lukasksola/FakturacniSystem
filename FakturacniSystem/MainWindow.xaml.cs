@@ -33,5 +33,9 @@ namespace FakturacniSystem
         {
             MainFrame.Navigate(new ZaznamDodavateluView());
         }
+        private void OdebirateleNavigate(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ZaznamDodavateluView());
+        }
     }
 }

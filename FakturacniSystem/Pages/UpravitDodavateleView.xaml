@@ -23,16 +23,16 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Nazev produktu" Grid.Row="1"/>
-        <TextBox Grid.Column="0" Margin="20" Text="{Binding Jmeno,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1"/>
+        <TextBox Grid.Column="0" Margin="20" Text="{Binding Nazev,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1"/>
 
         <TextBlock Grid.Column="1" Text="ID" Grid.Row="1"/>
         <TextBox Grid.Column="1" Margin="30" Text="{Binding Id}" IsReadOnly="True" Grid.Row="1"/>
 
         <TextBlock Grid.Row="2"  Text="Pocet" />
-        <TextBox Grid.Column="0" Grid.Row="2" Margin="25" Text="{Binding Pocet, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        <TextBox Grid.Column="0" Grid.Row="2" Margin="25" Text="{Binding pridanyPocet, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
 
         <TextBlock Grid.Row="2" Grid.Column="1"  Text="Nazev dodavatele" />
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="25" Text="{Binding Pocet, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="25" Text="{Binding NazevDodavatele, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
 
         <Button Grid.Row="3" Margin="30" Content="Potvrdit" FontSize="25" Click="PotrvditUpravu"/>
         <Button Grid.Row="3" Grid.Column="1" Margin="30" Content="Zrusit" FontSize="25" Click="ZrusitUpravu" />

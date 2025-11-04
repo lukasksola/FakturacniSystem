@@ -2,6 +2,7 @@
 using FakturacniSystem.EF;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,77 @@ namespace FakturacniSystem.Pages
     /// <summary>
     /// Interakční logika pro UpravitDodavateleView.xaml
     /// </summary>
-    public partial class UpravitDodavateleView : Page
+    public partial class UpravitDodavateleView : Page, INotifyPropertyChanged
     {
         public DodavaniZaznam Zaznam { get; set; }
-        public Polozka polozka;
+        public Polozka polozkaNaView;
+
+        string _nazev;
+        public string Nazev
+        {
+            get { return _nazev; }
+            set
+            {
+                if (value != _nazev && value != null)
+                {
+                    _nazev = value;
+
+                    OnPropertyChanged(nameof(Nazev));
+                }
+            }
+        }
+        int _pridanyPocet;
+        public string pridanyPocet
+        {
+            get { return _pridanyPocet + ""; }
+            set
+            {
+                if (value != _pridanyPocet + "" && value != null)
+                {
+                    _pridanyPocet = int.Parse(value);
+
+                    OnPropertyChanged(nameof(pridanyPocet));
+                }
+            }
+        }
+
+        int _id;
+        public string Id
+        {
+            get { return _id + ""; }
+            set
+            {
+                if (value != _id + "" && value != null)
+                {
+                    _id = int.Parse(value);
+
+                    OnPropertyChanged(nameof(Id));
+                }
+            }
+        }
+
+        string _nazevDodavatele;
+        public string NazevDodavatele
+        {
+            get { return _nazevDodavatele; }
+            set
+            {
+                if (value != _nazevDodavatele && value != null)
+                {
+                    _nazevDodavatele = value;
+
+                    OnPropertyChanged(nameof(NazevDodavatele));
+                }
+            }
+        }
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+
+
+
+
         public UpravitDodavateleView(DodavaniZaznam zaznam)
         {
             InitializeComponent();
@@ -33,14 +101,19 @@ namespace FakturacniSystem.Pages
             }
             else
             {
-                
-                this.polozka = new Polozka();
-                this.polozka.Jmeno = polozka.Jmeno;
-                this.polozka.Pocet = polozka.Pocet;
-                this.polozka.Id = polozka.Id;
-                DataContext = this.polozka;
+                Zaznam = zaznam;
+
+
+                Nazev = Zaznam.polozka.Jmeno;
+                Id = Zaznam.dodavani.Id + "";
+                NazevDodavatele = Zaznam.dodavani.NazevDodavatele;
+                pridanyPocet = Zaznam.dodavani.pocetPolozekPridano + "";
+
+                this.DataContext = this;
 
             }
+
+            
         }
 
         private void PotrvditUpravu(object sender, RoutedEventArgs e)
@@ -50,17 +123,27 @@ namespace FakturacniSystem.Pages
                 var DbPolozky = db.Polozky.ToList();
                 for (int i = 0; i < DbPolozky.Count; i++)
                 {
-                    if (DbPolozky[i].Id == polozka.Id)
+                    if (DbPolozky[i].Id == Zaznam.polozka.Id)
                     {
-                        DbPolozky[i].Jmeno = polozka.Jmeno;
-
-                        DbPolozky[i].Pocet = polozka.Pocet;
-
+                        DbPolozky[i].Jmeno = Nazev;
 
 
                     }
                 }
                 db.SaveChanges();
+
+
+                var DbDodani = db.Dodavatele.ToList();
+                for(int i = 0;i < DbDodani.Count; i++)
+                {
+                    if (DbDodani[i].Id == int.Parse(Id))
+                    {
+                        DbDodani[i].NazevDodavatele = Nazev;
+                        DbDodani[i].pocetPolozekPridano = _pridanyPocet;
+                    }
+                }
+                db.SaveChanges();
+
             }
 
             MessageBox.Show("uprava uspesna");
@@ -72,6 +155,11 @@ namespace FakturacniSystem.Pages
             MessageBox.Show("uprava zrusena");
             NavigationService.GoBack();
 
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

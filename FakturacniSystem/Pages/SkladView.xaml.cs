@@ -28,8 +28,10 @@ namespace FakturacniSystem.Pages
         public SkladView()
         {
             InitializeComponent();
+            ManageSkladCount.ReloadSkladCount();
             LoadDB();
             SkladList.ItemsSource = Sklad;
+
         }
 
         private void LoadDB()
