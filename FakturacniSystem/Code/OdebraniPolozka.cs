@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FakturacniSystem.Code
 {
-    public class OdebraniZaznam
+    public class OdebraniPolozka
     {
         public int Id { get; set; }
         public string NazevOdberatele {  get; set; }

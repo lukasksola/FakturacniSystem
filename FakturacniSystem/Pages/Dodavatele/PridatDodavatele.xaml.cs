@@ -40,9 +40,12 @@ namespace FakturacniSystem.Pages
             {
                 if (value != _pridanyPocet + "" && value != null)
                 {
-                    _pridanyPocet = int.Parse(value);
-
-                    OnPropertyChanged(nameof(pridanyPocet));
+                    int parsnutyInput = InputHandler.ParseInputtedTextToInt(value);
+                    if(parsnutyInput != -1)
+                    {
+                        _pridanyPocet = parsnutyInput;
+                        OnPropertyChanged(nameof(pridanyPocet));
+                    }
                 }
             }
         }

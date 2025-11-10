@@ -25,8 +25,8 @@
         <ListView Background="AntiqueWhite" Grid.Row="2" Grid.Column="2" Name="SkladList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding Jmeno}" Width="140"/>
-                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding Pocet}" Width="200"/>
+                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding Jmeno}" Width="180"/>
+                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding Pocet}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

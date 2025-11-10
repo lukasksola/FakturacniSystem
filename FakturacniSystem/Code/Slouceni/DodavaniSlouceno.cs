@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakturacniSystem.Code
+namespace FakturacniSystem.Code.Slouceni
 {
-    public class DodavaniZaznam
+    public class DodavaniSlouceno
     {
-        public DodanaPolozka dodavani {  get; set; }
+        public DodanaPolozka dodavani { get; set; }
         public Polozka polozka { get; set; }
     }
 }

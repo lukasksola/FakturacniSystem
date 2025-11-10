@@ -1,4 +1,5 @@
 ﻿using FakturacniSystem.Code;
+using FakturacniSystem.Code.Slouceni;
 using FakturacniSystem.EF;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace FakturacniSystem.Pages
     /// </summary>
     public partial class UpravitDodavateleView : Page, INotifyPropertyChanged
     {
-        public DodavaniZaznam Zaznam { get; set; }
+        public DodavaniSlouceno Zaznam { get; set; }
         public Polozka polozkaNaView;
 
         string _nazev;
@@ -48,9 +49,12 @@ namespace FakturacniSystem.Pages
             {
                 if (value != _pridanyPocet + "" && value != null)
                 {
-                    _pridanyPocet = int.Parse(value);
-
-                    OnPropertyChanged(nameof(pridanyPocet));
+                    int parsnutyInt = InputHandler.ParseInputtedTextToInt(value);
+                    if (parsnutyInt != -1)
+                    {
+                        _pridanyPocet = parsnutyInt;
+                        OnPropertyChanged(nameof(pridanyPocet));
+                    }
                 }
             }
         }
@@ -92,7 +96,7 @@ namespace FakturacniSystem.Pages
 
 
 
-        public UpravitDodavateleView(DodavaniZaznam zaznam)
+        public UpravitDodavateleView(DodavaniSlouceno zaznam)
         {
             InitializeComponent();
             if (zaznam == null)

@@ -1,4 +1,5 @@
 ﻿using FakturacniSystem.Code;
+using FakturacniSystem.Code.Slouceni;
 using FakturacniSystem.EF;
 using System;
 using System.Collections.Generic;
@@ -27,24 +28,25 @@ namespace FakturacniSystem.Pages
         {
             InitializeComponent();
             LoadDb();
-            DodavateleList.ItemsSource = Contract;
+            OdberateleList.ItemsSource = Contract;
         }
 
-        public List<OdebraniZaznam> odberatele = new List<OdebraniZaznam>();
-        public List<DodanyOdber> Contract = new List<DodanyOdber>();
+        public List<OdebraniPolozka> odberatele = new List<OdebraniPolozka>();
+        public List<OdebiraniSlouceno> Contract = new List<OdebiraniSlouceno>();
 
         private void LoadDb()
         {
             using (SqliteContext db = new SqliteContext())
             {
                 odberatele = db.Odebiratele.ToList();
+                var polozky = db.Polozky.ToList();
 
-                foreach (OdebraniZaznam odebrano in odberatele)
+                foreach (OdebraniPolozka odebrano in odberatele)
                 {
-                    DodanyOdber odberContract = new DodanyOdber();
+                    OdebiraniSlouceno odberContract = new OdebiraniSlouceno();
                     odberContract.odebirani = odebrano;
 
-                    odberContract.polozka = db.Polozky.ToList().FirstOrDefault(x => x.Id == odebrano.PolozkaId);
+                    odberContract.polozka = polozky.FirstOrDefault(x => x.Id == odebrano.PolozkaId);
 
                     Contract.Add(odberContract);
                 }
@@ -67,9 +69,9 @@ namespace FakturacniSystem.Pages
 
         private void UpravitDodavatele(object sender, RoutedEventArgs e)
         {
-            if (DodavateleList.SelectedItem != null)
+            if (OdberateleList.SelectedItem != null)
             {
-                NavigationService.Navigate(new UpravitDodavateleView((DodavaniZaznam)DodavateleList.SelectedItem));
+                NavigationService.Navigate(new UpravitDodavateleView((DodavaniSlouceno)OdberateleList.SelectedItem));
             }
         }
     }

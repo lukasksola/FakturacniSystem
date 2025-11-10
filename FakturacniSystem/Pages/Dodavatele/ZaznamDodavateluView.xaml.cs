@@ -1,4 +1,5 @@
 ﻿using FakturacniSystem.Code;
+using FakturacniSystem.Code.Slouceni;
 using FakturacniSystem.EF;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace FakturacniSystem.Pages
     public partial class ZaznamDodavateluView : Page
     {
         public List<DodanaPolozka> dodavatele = new List<DodanaPolozka>();
-        public List<DodavaniZaznam> Contract = new List<DodavaniZaznam>();
+        public List<DodavaniSlouceno> Contract = new List<DodavaniSlouceno>();
 
         public ZaznamDodavateluView()
         {
@@ -41,7 +42,7 @@ namespace FakturacniSystem.Pages
                 dodavatele = db.Dodavatele.ToList();
 
                 foreach (DodanaPolozka dodano in dodavatele) {
-                    DodavaniZaznam zaznam = new DodavaniZaznam();
+                    DodavaniSlouceno zaznam = new DodavaniSlouceno();
                     zaznam.dodavani = dodano;
 
                     zaznam.polozka = db.Polozky.ToList().FirstOrDefault(x => x.Id == dodano.PolozkaId); 
@@ -69,7 +70,7 @@ namespace FakturacniSystem.Pages
         {
             if (DodavateleList.SelectedItem != null)
             {
-                NavigationService.Navigate(new UpravitDodavateleView((DodavaniZaznam)DodavateleList.SelectedItem));
+                NavigationService.Navigate(new UpravitDodavateleView((DodavaniSlouceno)DodavateleList.SelectedItem));
             }
         }
 

@@ -19,16 +19,16 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-            <Button Height="50" Content="Upravit dodani" />
-            <Button Content="Pridat dodani" Height="80" />
+            <Button Height="50" Content="Upravit odber" />
+            <Button Content="Pridat odber" Height="80" />
         </StackPanel>
 
-        <ListView Background="LightBlue" Grid.Row="2" Grid.Column="2" Name="DodavateleList">
+        <ListView Background="LightGreen" Grid.Row="2" Grid.Column="2" Name="OdberateleList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding polozka.Jmeno}" Width="140"/>
-                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding dodavani.pocetPolozekPridano}" Width="200"/>
-                    <GridViewColumn Header="Dodavatel" DisplayMemberBinding="{Binding dodavani.NazevDodavatele}" Width="200"/>
+                    <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding polozka.Jmeno}" Width="180"/>
+                    <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding dodavani.pocetPolozekPridano}" Width="100"/>
+                    <GridViewColumn Header="Odberatel" DisplayMemberBinding="{Binding dodavani.NazevDodavatele}" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>
