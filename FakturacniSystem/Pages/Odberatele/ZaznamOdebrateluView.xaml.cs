@@ -1,6 +1,7 @@
 ﻿using FakturacniSystem.Code;
 using FakturacniSystem.Code.Slouceni;
 using FakturacniSystem.EF;
+using FakturacniSystem.Pages.Odberatele;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace FakturacniSystem.Pages
     /// </summary>
     public partial class ZaznamOdebrateluView : Page, INotifyPropertyChanged
     {
+        //faktura ma byt
         public ZaznamOdebrateluView()
         {
             InitializeComponent();
@@ -62,12 +64,19 @@ namespace FakturacniSystem.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void PridatDodavatele(object sender, RoutedEventArgs e)
+        private void PridatOdberatele(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PridatDodavatele());
+            NavigationService.Navigate(new PridatOdberateleView());
+        }
+        private void VystavitFakturu(object sender, RoutedEventArgs e)
+        {
+            if (OdberateleList.SelectedItem != null)
+            {
+                new FakturyCreator().CreatePDF((OdebiraniSlouceno)OdberateleList.SelectedItem);
+            }
         }
 
-        private void UpravitDodavatele(object sender, RoutedEventArgs e)
+        private void UpravitOdberatele(object sender, RoutedEventArgs e)
         {
             if (OdberateleList.SelectedItem != null)
             {

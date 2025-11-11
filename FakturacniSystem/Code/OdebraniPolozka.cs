@@ -15,5 +15,7 @@ namespace FakturacniSystem.Code
         public int PolozkaId { get; set; }
 
         public int pocetPolozekOdebrano { get; set; }
+
+        public int CenaZaKus {  get; set; }
     }
 }
