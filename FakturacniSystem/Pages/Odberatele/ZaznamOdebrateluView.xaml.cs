@@ -72,7 +72,7 @@ namespace FakturacniSystem.Pages
         {
             if (OdberateleList.SelectedItem != null)
             {
-                new FakturyCreator().CreatePDF((OdebiraniSlouceno)OdberateleList.SelectedItem);
+                new FakturyCreator((OdebiraniSlouceno)OdberateleList.SelectedItem).CreatePDF();
             }
         }
 

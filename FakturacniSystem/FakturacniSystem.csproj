@@ -21,6 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="PDFsharp" Version="6.2.2" />
+    <PackageReference Include="QRCoder" Version="1.7.0" />
     <PackageReference Include="SQLite" Version="3.13.0" />
   </ItemGroup>
 
