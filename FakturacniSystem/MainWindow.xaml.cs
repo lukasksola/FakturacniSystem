@@ -8,7 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FakturacniSystem.EF;
 using FakturacniSystem.Pages;
+using Microsoft.EntityFrameworkCore;
 
 namespace FakturacniSystem
 {
@@ -21,7 +23,6 @@ namespace FakturacniSystem
         {
             InitializeComponent();
             MainFrame.Navigate(new SkladView());
-
 
         }
 

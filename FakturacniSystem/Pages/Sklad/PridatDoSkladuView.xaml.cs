@@ -90,6 +90,7 @@ namespace FakturacniSystem.Pages
             {
                 MessageBox.Show("Pocet pridan");
             }
+            MessageBox.Show("Rucne pridani polozky bez zaznamu dodani vede ke spatnemu chovani aplikace, Pouze pro testovani");
 
             NavigationService.Navigate(new SkladView());
 

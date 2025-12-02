@@ -80,7 +80,7 @@ namespace FakturacniSystem.Pages
         {
             if (OdberateleList.SelectedItem != null)
             {
-                NavigationService.Navigate(new UpravitDodavateleView((DodavaniSlouceno)OdberateleList.SelectedItem));
+                NavigationService.Navigate(new UpravitOdberateleView((OdebiraniSlouceno)OdberateleList.SelectedItem));
             }
         }
     }
