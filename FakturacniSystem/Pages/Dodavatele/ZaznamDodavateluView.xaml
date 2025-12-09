@@ -23,7 +23,7 @@
             <Button Content="Pridat dodani" Height="80" Click="PridatDodavatele"/>
         </StackPanel>
         
-        <ListView Background="LightBlue" Grid.Row="2" Grid.Column="2" Name="DodavateleList">
+        <ListView Background="LightBlue" Grid.Row="2" Grid.Column="2" Name="DodavateleList" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Produkt" DisplayMemberBinding="{Binding polozka.Jmeno}" Width="180"/>

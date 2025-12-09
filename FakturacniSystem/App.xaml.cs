@@ -17,8 +17,6 @@ namespace FakturacniSystem
 
             await InitializeDatabaseAsync();
 
-            var main = new MainWindow();
-            main.Show();
         }
 
         private async Task InitializeDatabaseAsync()

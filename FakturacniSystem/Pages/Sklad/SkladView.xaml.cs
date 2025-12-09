@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FakturacniSystem.Code;
 using FakturacniSystem.EF;
+using FakturacniSystem.Pages.Sklad;
+
 
 namespace FakturacniSystem.Pages
 {
@@ -59,6 +61,14 @@ namespace FakturacniSystem.Pages
         {
             if (SkladList.SelectedItem != null) {
                 NavigationService.Navigate(new UpravitPolozkuView((Polozka)SkladList.SelectedItem));
+            }
+        }
+        private void ZobrazitHistorii(object sender, RoutedEventArgs e)
+        {
+            if (SkladList.SelectedItem != null)
+            {
+                NavigationService.Navigate(new HistorieView((Polozka)SkladList.SelectedItem));
+                
             }
         }
     }
