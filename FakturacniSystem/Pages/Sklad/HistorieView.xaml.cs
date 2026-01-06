@@ -1,5 +1,6 @@
 ﻿using FakturacniSystem.Code;
 using FakturacniSystem.EF;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace FakturacniSystem.Pages.Sklad
@@ -59,6 +60,47 @@ namespace FakturacniSystem.Pages.Sklad
 
 
             }
+        }
+
+        private void SmazatZaznam(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (Dodavatele.SelectedItems.Count > 0)
+            {
+                MessageBox.Show(Dodavatele.SelectedItems.Count + "");
+
+                using (SqliteContext db = new SqliteContext())
+                {
+                    foreach (DodanaPolozka polozka in Dodavatele.SelectedItems)
+                    {
+                        if (db.Dodavatele.Contains(polozka))
+                        {
+                            db.Dodavatele.Remove(polozka);
+                        }
+                    }
+                    db.SaveChanges();
+
+
+                }
+            }
+
+            if (Odberatele.SelectedItems.Count > 0)
+            {
+                MessageBox.Show(Odberatele.SelectedItems.Count + "");
+
+                using (SqliteContext db = new SqliteContext())
+                {
+                    foreach (OdebraniPolozka polozka in Odberatele.SelectedItems)
+                    {
+                        if (db.Odebiratele.Contains(polozka))
+                        {
+                            db.Odebiratele.Remove(polozka);
+                        }
+                    }
+                    db.SaveChanges();
+
+                }
+            }
+
         }
     }
 }

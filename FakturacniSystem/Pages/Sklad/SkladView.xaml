@@ -18,6 +18,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+            <Button Height="50" Width="100" Margin="0,0,0,10" Content="Smazat" Click="SmazatPolozky" />
+
             <Button Height="50" Width="100" Margin="0,0,0,10" Content="Zobrazit historii" Click="ZobrazitHistorii" />
 
             <Button Height="50" Content="Upravit Polozku" Click="UpravitPolozku" />

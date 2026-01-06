@@ -42,9 +42,11 @@
                 <GridView>
                     <GridViewColumn Header="Pocet" DisplayMemberBinding="{Binding pocetPolozekOdebrano}" Width="100"/>
                     <GridViewColumn Header="Odbertatel" DisplayMemberBinding="{Binding NazevOdberatele}" Width="100"/>
+                    <GridViewColumn Header="Cena za kus" DisplayMemberBinding="{Binding CenaZaKus}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
+        <Button Grid.Row="3" Grid.Column="1" Margin="60" Content="Smazat vybrane zaznamy" Click="SmazatZaznam"/>
     </Grid>
 </Page>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FakturacniSystem.EF
 {
@@ -29,6 +30,7 @@ namespace FakturacniSystem.EF
                             pocet += dodavani[j].pocetPolozekPridano;
                             necoNalezeno = true;
                         }
+                        
 
                     }
 
@@ -45,7 +47,14 @@ namespace FakturacniSystem.EF
                     if (necoNalezeno) {
                         sklad[i].Pocet = pocet;
                     }
-                    
+                    else
+                    {
+                        sklad[i].Pocet = 0;
+
+                    }
+
+
+
                 }
                 db.SaveChanges();
 

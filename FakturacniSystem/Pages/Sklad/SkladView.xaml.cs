@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FakturacniSystem.Code;
+﻿using FakturacniSystem.Code;
 using FakturacniSystem.EF;
 using FakturacniSystem.Pages.Sklad;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 
 namespace FakturacniSystem.Pages
@@ -59,7 +48,8 @@ namespace FakturacniSystem.Pages
 
         private void UpravitPolozku(object sender, RoutedEventArgs e)
         {
-            if (SkladList.SelectedItem != null) {
+            if (SkladList.SelectedItem != null)
+            {
                 NavigationService.Navigate(new UpravitPolozkuView((Polozka)SkladList.SelectedItem));
             }
         }
@@ -68,7 +58,48 @@ namespace FakturacniSystem.Pages
             if (SkladList.SelectedItem != null)
             {
                 NavigationService.Navigate(new HistorieView((Polozka)SkladList.SelectedItem));
+
+            }
+        }
+
+        private void SmazatPolozky(object sender, RoutedEventArgs e)
+        {
+            if (SkladList.SelectedItems.Count > 0)
+            {
+                using (SqliteContext db = new SqliteContext())
+                {
+                    
+                    foreach (Polozka polozka in SkladList.SelectedItems)
+                    {
                 
+                        for(int i = 0; i < db.Dodavatele.Count(); i++)
+                        {
+                            if (db.Dodavatele.ToList()[i].PolozkaId == polozka.Id)
+                            {
+                                db.Dodavatele.Remove(db.Dodavatele.ElementAt(i));
+                            }
+
+                        }
+
+                        for (int i = 0; i < db.Odebiratele.Count(); i++)
+                        {
+                            if (db.Odebiratele.ToList()[i].PolozkaId == polozka.Id)
+                            {
+                                db.Odebiratele.Remove(db.Odebiratele.ElementAt(i));
+                            }
+
+                        }
+
+                        
+                        db.Polozky.Remove(polozka);
+                            
+                        MessageBox.Show($"smaznuto");
+
+                    }
+                    db.SaveChanges();
+                }
+
+
             }
         }
     }
