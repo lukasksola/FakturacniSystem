@@ -25,7 +25,6 @@ namespace FakturacniSystem
             MainFrame.Navigate(new SkladView());
 
         }
-
         private void SkladNavigate(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new SkladView());

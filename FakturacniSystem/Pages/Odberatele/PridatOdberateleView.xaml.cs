@@ -125,6 +125,7 @@ namespace FakturacniSystem.Pages.Odberatele
             var odberatel = new OdebraniPolozka();
             odberatel.pocetPolozekOdebrano = _odebranyPocet;
             odberatel.NazevOdberatele = _nazevOdberatele;
+            if (odberatel.NazevOdberatele == null) odberatel.NazevOdberatele = "null";
             odberatel.CenaZaKus = _cenaZaKus;
 
             using (var db = new SqliteContext()) {

@@ -92,6 +92,7 @@ namespace FakturacniSystem.Pages
         {
             var polozka = new Polozka();
             polozka.Jmeno = _nazev;
+            if (polozka.Jmeno == null) polozka.Jmeno = "null";
             polozka.Pocet = _pridanyPocet;
             if (!AddPocet())
             {
@@ -113,6 +114,7 @@ namespace FakturacniSystem.Pages
             {
                 var dodavatel = new DodanaPolozka();
                 dodavatel.NazevDodavatele = _nazevDodavatele;
+                if (dodavatel.NazevDodavatele == null) dodavatel.NazevDodavatele = "null";
                 int id = 0;
 
                 foreach(Polozka pol in db.Polozky.ToList())

@@ -142,7 +142,7 @@ namespace FakturacniSystem.Pages
                 {
                     if (DbDodani[i].Id == int.Parse(Id))
                     {
-                        DbDodani[i].NazevDodavatele = Nazev;
+                        DbDodani[i].NazevDodavatele = NazevDodavatele;
                         DbDodani[i].pocetPolozekPridano = _pridanyPocet;
                     }
                 }
