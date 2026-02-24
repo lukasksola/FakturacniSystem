@@ -13,9 +13,9 @@
         </Grid.RowDefinitions>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 
-        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Content="Sklad" Click="SkladNavigate"/>
-        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="150,0,0,0" Content="Dodavatele" Click="DodavateleNavigate"/>
-        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="300,0,0,0" Content="Odberatele" Click="OdebirateleNavigate"/>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Content="Sklad" Click="SkladNavigate" Name="skladBut"/>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="150,0,0,0" Content="Dodavatele" Name="dodavateleBut" Click="DodavateleNavigate"/>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="300,0,0,0" Content="Odberatele" Name="odebirateleBut" Click="OdebirateleNavigate"/>
 
 
 

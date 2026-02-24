@@ -101,6 +101,7 @@ namespace FakturacniSystem.Pages.Sklad
                 }
             }
 
+            NavigationService.Navigate(new HistorieView(polozka));
         }
     }
 }
